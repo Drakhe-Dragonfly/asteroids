@@ -2,7 +2,11 @@ import pygame
 from constants import *
 from circleshape import *
 
+updatable = pygame.sprite.Group()
+drawable = pygame.sprite.Group()
+
 class Player(CircleShape):
+
     def __init__(self, x, y):
         super().__init__(x, y, PLAYER_RADIUS)
         self.rotation = 0
@@ -53,3 +57,5 @@ class Player(CircleShape):
         self.position += forward * PLAYER_SPEED * dt
         self.position.x %= SCREEN_WIDTH
         self.position.y %= SCREEN_HEIGHT
+        
+Player.containers = (updatable, drawable)
